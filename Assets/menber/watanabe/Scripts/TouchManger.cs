@@ -11,6 +11,12 @@ public class TouchManger : MonoBehaviour
     private GameObject _center;
     [SerializeField]
     public bool _animStart = false;
+    [SerializeField]
+    private GameObject _Water;
+
+    leaf _leaf;
+    [SerializeField]
+    public float _angle;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,20 +34,18 @@ public class TouchManger : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            SoundManager.instance.PlayAudioSorce(SoundManager.AudioOfType.SYSTEMSE, 0);
             // カーソル位置を取得
-            Vector3 mousePosition = Input.mousePosition;
-            float dis = Vector3.Distance(mousePosition, _center.transform.position);
-            // カーソル位置のz座標を10に
-            mousePosition.z = 10;
-            // カーソル位置をワールド座標に変換
-            Vector3 target = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float dis = Vector2.Distance(mousePos, _center.transform.position);
+            _angle = Mathf.Atan2(mousePos.y - _center.transform.position.y, mousePos.x - _center.transform.position.x);
+            transform.rotation = Quaternion.AngleAxis(_angle * Mathf.Rad2Deg, Vector3.forward);
+            //mousePosition.z = 10;
+            Debug.Log(_angle);
             // GameObjectのtransform.positionにカーソル位置(ワールド座標)を代入
-            transform.position = target;
+            transform.position = mousePos;
+            GameObject obj = Instantiate(_Water, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
             _animStart = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            _animStart = false;
         }
     }
 }
