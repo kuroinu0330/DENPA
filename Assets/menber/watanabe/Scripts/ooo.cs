@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ooo : MonoBehaviour
 {
+    [SerializeField]
+    private Transform _self;
+    [SerializeField]
+    private Transform aaa;
+    [SerializeField]
+    TouchManger manger;
     private float RotSpeed = 500;
     void Update()
     {
-        gameObject.transform.Rotate(new Vector3(0f, 0f, -RotSpeed) * Time.deltaTime);
+        _self.LookAt(aaa);
     }
 }
