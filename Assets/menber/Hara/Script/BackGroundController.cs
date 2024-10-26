@@ -17,7 +17,7 @@ public class BackGroundController : MonoBehaviour
     void Start () {
         bgTfm = transform;
         mySpriteRndr = GetComponent<SpriteRenderer>();
-        width = mySpriteRndr.bounds.size.y;
+        width = mySpriteRndr.bounds.size.x;
     }
  
  
