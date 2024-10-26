@@ -13,7 +13,7 @@ public class TouchManger : MonoBehaviour
     public bool _animStart = false;
     [SerializeField]
     private GameObject _Water;
-
+    [SerializeField]
     leaf _leaf;
     [SerializeField]
     public float _angle;
@@ -39,9 +39,11 @@ public class TouchManger : MonoBehaviour
             Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float dis = Vector2.Distance(mousePos, _center.transform.position);
             _angle = Mathf.Atan2(mousePos.y - _center.transform.position.y, mousePos.x - _center.transform.position.x);
+            //Vector2 angle = (mousePos - (Vector2)transform.position);
+            //_leaf.ArrowShot(-angle);
             transform.rotation = Quaternion.AngleAxis(_angle * Mathf.Rad2Deg, Vector3.forward);
             //mousePosition.z = 10;
-            Debug.Log(_angle);
+            Debug.Log(-_angle);
             // GameObjectのtransform.positionにカーソル位置(ワールド座標)を代入
             transform.position = mousePos;
             GameObject obj = Instantiate(_Water, new Vector2(this.transform.position.x, this.transform.position.y), Quaternion.identity);
