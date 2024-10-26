@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TouchManger : MonoBehaviour
 {
-    [SerializeField]
-    leaf _liaf;
 
     [SerializeField] 
     private GameObject _center;
@@ -13,8 +11,6 @@ public class TouchManger : MonoBehaviour
     public bool _animStart = false;
     [SerializeField]
     private GameObject _Water;
-    [SerializeField]
-    leaf _leaf;
     [SerializeField]
     public float _angle;
     // Start is called before the first frame update

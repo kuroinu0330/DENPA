@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveStart : MonoBehaviour
 {
     [SerializeField]
-    private TouchManger _touchmanger;
+    private Test _touchmanger;
     private Animator _anim;
     // Start is called before the first frame update
     void Start()
